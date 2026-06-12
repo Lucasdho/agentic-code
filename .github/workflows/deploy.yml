@@ -1,0 +1,91 @@
+name: Deploy Quartz — Agentic Engineering Notes
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Clone Quartz v4
+        run: git clone --depth 1 https://github.com/jackyzha0/quartz.git quartz-build
+
+      - name: Install dependencies
+        working-directory: quartz-build
+        run: npm ci
+
+      - name: Copiar conteúdo
+        run: |
+          rm -rf quartz-build/content/*
+          cp -r content/. quartz-build/content/
+
+      - name: Customizar Quartz config
+        working-directory: quartz-build
+        env:
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          python3 - << 'PYEOF'
+          import os, re
+
+          owner = os.environ["REPO_OWNER"]
+          repo  = os.environ["REPO_NAME"]
+
+          with open("quartz.config.ts") as f:
+              cfg = f.read()
+
+          cfg = cfg.replace(
+              'pageTitle: "Quartz 4"',
+              'pageTitle: "Agentic Engineering Notes"'
+          )
+          cfg = re.sub(
+              r'baseUrl: "[^"]+"',
+              f'baseUrl: "{owner}.github.io/{repo}"',
+              cfg
+          )
+          cfg = cfg.replace('locale: "en-US"', 'locale: "pt-BR"')
+
+          with open("quartz.config.ts", "w") as f:
+              f.write(cfg)
+
+          print(f"✓ baseUrl = {owner}.github.io/{repo}")
+          PYEOF
+
+      - name: Build
+        working-directory: quartz-build
+        run: npx quartz build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: quartz-build/public
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
