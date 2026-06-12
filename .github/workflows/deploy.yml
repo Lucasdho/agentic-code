@@ -68,10 +68,18 @@ jobs:
           )
           cfg = cfg.replace('locale: en-US', 'locale: pt-BR')
 
+          # Exclude agentes folder from published pages
+          cfg = re.sub(
+              r'(ignorePatterns:\s*\n(?:\s+- [^\n]+\n)*)',
+              lambda m: m.group(0) + '    - agentes\n',
+              cfg
+          )
+
           with open("quartz.config.default.yaml", "w") as f:
               f.write(cfg)
 
           print(f"✓ baseUrl = {owner}.github.io/{repo}")
+          print("✓ agentes/ excluded from pages")
           PYEOF
 
       - name: Install Quartz plugins
