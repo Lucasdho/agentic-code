@@ -74,6 +74,10 @@ jobs:
           print(f"✓ baseUrl = {owner}.github.io/{repo}")
           PYEOF
 
+      - name: Install Quartz plugins
+        working-directory: quartz-build
+        run: npm run install-plugins
+
       - name: Build
         working-directory: quartz-build
         run: npx quartz build
