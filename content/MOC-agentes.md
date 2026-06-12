@@ -27,7 +27,7 @@ aliases: [Mapa de Agentes, índice de conhecimento, hub]
     ↓
 [[03-langchain-patterns]]
     ↓
-04-crewai-patterns (pendente)
+[[04-crewai-patterns]]
     ↓
 05-google-adk-patterns (pendente)
 ```
