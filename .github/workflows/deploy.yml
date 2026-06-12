@@ -25,10 +25,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node 22
+      - name: Setup Node 24
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Clone Quartz v5
         run: git clone --depth 1 https://github.com/jackyzha0/quartz.git quartz-build
@@ -76,7 +76,7 @@ jobs:
 
       - name: Install Quartz plugins
         working-directory: quartz-build
-        run: npm run install-plugins
+        run: npx quartz plugin install
 
       - name: Build
         working-directory: quartz-build
