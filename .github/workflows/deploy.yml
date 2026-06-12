@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Clone Quartz v4
+      - name: Clone Quartz v5
         run: git clone --depth 1 https://github.com/jackyzha0/quartz.git quartz-build
 
       - name: Install dependencies
@@ -54,21 +54,21 @@ jobs:
           owner = os.environ["REPO_OWNER"]
           repo  = os.environ["REPO_NAME"]
 
-          with open("quartz.config.ts") as f:
+          with open("quartz.config.default.yaml") as f:
               cfg = f.read()
 
           cfg = cfg.replace(
-              'pageTitle: "Quartz 4"',
-              'pageTitle: "Agentic Engineering Notes"'
+              'pageTitle: Quartz 5',
+              'pageTitle: Agentic Engineering Notes'
           )
           cfg = re.sub(
-              r'baseUrl: "[^"]+"',
-              f'baseUrl: "{owner}.github.io/{repo}"',
+              r'baseUrl: \S+',
+              f'baseUrl: {owner}.github.io/{repo}',
               cfg
           )
-          cfg = cfg.replace('locale: "en-US"', 'locale: "pt-BR"')
+          cfg = cfg.replace('locale: en-US', 'locale: pt-BR')
 
-          with open("quartz.config.ts", "w") as f:
+          with open("quartz.config.default.yaml", "w") as f:
               f.write(cfg)
 
           print(f"✓ baseUrl = {owner}.github.io/{repo}")
