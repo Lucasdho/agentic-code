@@ -84,13 +84,13 @@ founderlens-specs/learning/
 │   └── 07-apple-foundation-models.md   ⏳ (incorporado em 08)
 │
 ├── ARQUITETURA  ← próximo passo crítico antes de codar
-│   └── 08-arquitetura-server-side.md   ⏳
+│   └── 08-arquitetura-server-side.md   ✅
 │
 └── SÍNTESE  ← guia de implementação por onde começar
-    └── 09-founderlens-agent-map.md     ⏳
+    └── 09-founderlens-agent-map.md     ✅
 ```
 
-**Progresso: 7/10 módulos. Faltam 2 lições antes de codar.**
+**Progresso: 10/10 módulos. ESTUDOS COMPLETOS → próximo passo: código.**
 
 ---
 

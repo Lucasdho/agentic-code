@@ -76,29 +76,32 @@ Double Diamond
 
 ---
 
-## Decisão arquitetural em aberto
+## Decisão arquitetural
 
-Três opções (não decidir antes de estudar):
+**Direção definida pelo founder:** Apple Foundation Models como primário, Claude como fallback.
 
 | Opção | Resumo | Status |
 |---|---|---|
-| A — Pure BYOK | Usuário traz chave Anthropic | Mata conversão de não-técnicos |
-| B — Server-side | FounderLens tem servidor | Preferida, habilita frameworks Python |
-| C — Apple FM híbrido | On-device + Claude no servidor | Depende de evolução da Apple |
+| A — Pure BYOK | Usuário traz chave Anthropic | ❌ Mata conversão de não-técnicos |
+| B — Server-side | FounderLens tem servidor, paga Claude | ❌ Custo desnecessário se PCC é free |
+| C — Apple FM first | PCC (free <2M users) + Claude fallback via LanguageModel protocol | ✅ Direção escolhida |
 
-→ Decisão final: [[09-founderlens-agent-map]] (após lições 07 e 08)
+**Questões abertas (resolver nos vídeos do WWDC):**
+- Tool calling funciona no AFM 3 Cloud Pro (PCC)?
+- Python SDK tem acesso a PCC ou só on-device?
+- Context window do Cloud Pro é suficiente para o project_state completo?
 
-**Status:** padrões de agente dominados (lições 00-06). Falta: decisão arquitetural
-(onde roda o código) e mapa de implementação (por onde começar a codar).
+**Status:** ✅ ESTUDOS COMPLETOS (lições 00-09). Próximo: assistir WWDC → confirmar questões abertas → código.
+Stack: Apple FM (PCC) para agentes + Supabase (DB/auth/realtime) + Claude como fallback via LanguageModel protocol.
+Começar por: Benchmark Agent — mais simples, valida infra, primeiro no pipeline.
 
 ---
 
 ## Referências de produto e plataforma
 
 - [[06-multica-openspec-map]]   ✅ — competidores e padrões de produto
-- 07-apple-foundation-models    ⏳ pendente (ou merge em 08)
-- 08-arquitetura-server-side    ⏳ pendente — decisão crítica antes de codar
-- 09-founderlens-agent-map      ⏳ pendente — síntese + guia de implementação
+- [[08-arquitetura-server-side]] ✅ — decisão fechada: Opção B + Apple FM on-device para UI
+- [[09-founderlens-agent-map]]  ✅ — mapa completo + ordem de implementação
 
 ---
 
