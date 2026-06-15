@@ -19,17 +19,17 @@ aliases: [Mapa de Agentes, índice de conhecimento, hub]
 ## Fundamentos (estudar em ordem)
 
 ```
-[[00-o-que-e-um-agente]]
+[[00-o-que-e-um-agente]]    ✅
     ↓
-[[01-function-calling]]
+[[01-function-calling]]     ✅
     ↓
-[[02-react-loop]]
+[[02-react-loop]]           ✅
     ↓
-[[03-langchain-patterns]]
+[[03-langchain-patterns]]   ✅
     ↓
-[[04-crewai-patterns]]
+[[04-crewai-patterns]]      ✅
     ↓
-05-google-adk-patterns (pendente)
+[[05-google-adk-patterns]]  ✅
 ```
 
 ---
@@ -86,15 +86,19 @@ Três opções (não decidir antes de estudar):
 | B — Server-side | FounderLens tem servidor | Preferida, habilita frameworks Python |
 | C — Apple FM híbrido | On-device + Claude no servidor | Depende de evolução da Apple |
 
-→ Decisão final: [[09-founderlens-agent-map]] (após estudar todos os módulos)
+→ Decisão final: [[09-founderlens-agent-map]] (após lições 07 e 08)
+
+**Status:** padrões de agente dominados (lições 00-06). Falta: decisão arquitetural
+(onde roda o código) e mapa de implementação (por onde começar a codar).
 
 ---
 
-## Referências de produto e plataforma (pendentes)
+## Referências de produto e plataforma
 
-- 06-multica-openspec-map (pendente)
-- [[07-apple-foundation-models]] (pendente)
-- 08-arquitetura-server-side (pendente)
+- [[06-multica-openspec-map]]   ✅ — competidores e padrões de produto
+- 07-apple-foundation-models    ⏳ pendente (ou merge em 08)
+- 08-arquitetura-server-side    ⏳ pendente — decisão crítica antes de codar
+- 09-founderlens-agent-map      ⏳ pendente — síntese + guia de implementação
 
 ---
 

@@ -70,25 +70,27 @@ founderlens-specs/learning/
 ├── PLANO-DE-ESTUDOS.md          ← este arquivo
 │
 ├── FUNDAMENTOS (estudar primeiro)
-│   ├── 00-o-que-e-um-agente.md
-│   ├── 01-function-calling.md
-│   └── 02-react-loop.md
+│   ├── 00-o-que-e-um-agente.md     ✅
+│   ├── 01-function-calling.md      ✅
+│   └── 02-react-loop.md            ✅
 │
 ├── FRAMEWORKS COMO PROFESSORES DE PADRÃO
-│   ├── 03-langchain-patterns.md
-│   ├── 04-crewai-patterns.md
-│   └── 05-google-adk-patterns.md
+│   ├── 03-langchain-patterns.md    ✅
+│   ├── 04-crewai-patterns.md       ✅
+│   └── 05-google-adk-patterns.md   ✅
 │
 ├── REFERÊNCIAS DE PRODUTO E PLATAFORMA
-│   ├── 06-multica-openspec-map.md
-│   └── 07-apple-foundation-models.md
+│   ├── 06-multica-openspec-map.md  ✅
+│   └── 07-apple-foundation-models.md   ⏳ (incorporado em 08)
 │
-├── ARQUITETURA
-│   └── 08-arquitetura-server-side.md
+├── ARQUITETURA  ← próximo passo crítico antes de codar
+│   └── 08-arquitetura-server-side.md   ⏳
 │
-└── SÍNTESE
-    └── 09-founderlens-agent-map.md
+└── SÍNTESE  ← guia de implementação por onde começar
+    └── 09-founderlens-agent-map.md     ⏳
 ```
+
+**Progresso: 7/10 módulos. Faltam 2 lições antes de codar.**
 
 ---
 
