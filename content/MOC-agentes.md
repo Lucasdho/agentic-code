@@ -47,6 +47,11 @@ Cada ideia fundamental tem sua própria nota. Estas são as mais importantes:
 | [[state-memoria]] | Curto prazo (historico) vs longo prazo (project_state) |
 | [[tool-description-as-prompt]] | A descrição é um prompt para o LLM |
 | [[loop-explicito-vs-abstraido]] | Por que escrever o loop, não abstrair |
+| [[harness]] | O ambiente que executa ferramentas e gerencia a sessão |
+| [[hooks]] | Scripts que disparam em eventos do harness (SessionStart, PreToolUse…) |
+| [[skills]] | Instruções especializadas carregadas sob demanda no contexto |
+| [[worktree]] | Isolamento git para agentes paralelos no mesmo repo |
+| [[progressive-disclosure]] | Contexto, ferramentas e memória revelados só quando necessário |
 
 ---
 
@@ -123,6 +128,20 @@ Começar por: Benchmark Agent — mais simples, valida infra, primeiro no pipeli
 
 [[tool-description-as-prompt]]
     └── afeta cada → ferramenta de cada agente
+
+[[harness]]
+    ├── expõe → [[hooks]]
+    ├── carrega → [[skills]]
+    ├── isola via → [[worktree]]
+    └── implementa → [[react-pattern]]
+
+[[skills]]
+    └── aplica → [[progressive-disclosure]]
+
+[[progressive-disclosure]]
+    ├── ferramentas (deferred schemas)
+    ├── skills (carregadas sob demanda)
+    └── memória (MEMORY.md leve + arquivos detalhados)
 ```
 
 ---
